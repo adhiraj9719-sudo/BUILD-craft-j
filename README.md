@@ -1,30 +1,31 @@
-from fastapi import FastAPI
-from pydantic import BaseModel
-import google.generativeai as genai
+# BrandCraft Lite 🚀
 
-app = FastAPI()
+BrandCraft Lite is a hackathon project that demonstrates how Generative AI can automate early-stage branding for startups and creators.
 
-# Configure your Gemini API Key
-genai.configure(api_key="YOUR_GEMINI_API_KEY")
-model = genai.GenerativeModel('gemini-pro')
+## 🔍 Problem
+Branding is expensive, time-consuming, and inaccessible for non-technical founders.
 
-class BrandRequest(BaseModel):
-    description: str
+## 💡 Solution
+BrandCraft Lite allows users to input a startup idea and instantly receive:
+- Brand name
+- Tagline
+- Brand description
 
-@app.post("/generate-brand")
-async def generate_brand(request: BrandRequest):
-    # 1. Generate Brand Name & Strategy using Gemini
-    prompt = f"Create a professional brand name, tagline, and a short brand story for: {request.description}"
-    response = model.generate_content(prompt)
-    
-    # 2. Logic for Logo Generation would go here (calling Stable Diffusion)
-    # 3. Logic for Sentiment Analysis would go here (using IBM/HuggingFace)
+## 🛠 Tech Stack
+- FastAPI (Backend)
+- HTML/CSS (Frontend)
+- Generative AI (Concept / API-ready)
+- Replit
 
-    return {
-        "brand_data": response.text,
-        "status": "Success"
-    }
+## ⚙️ How It Works
+1. User enters idea, audience, and tone
+2. Backend processes input
+3. AI generates branding content
+4. Results are displayed instantly
 
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+## 🚀 Future Scope
+- Logo generation
+- Website builder
+- Social media content
+- Brand consistency scoring
+
